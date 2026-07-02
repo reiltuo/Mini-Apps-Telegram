@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#075e54">
+  <title>Conversa privada</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="chat-app">
+    <header class="chat-header">
+      <span class="icon back-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></span>
+      <img src="assets/profile-placeholder.svg" alt="Foto de perfil">
+      <div class="contact">
+        <strong>Nome do contato</strong>
+      </div>
+    </header>
+
+    <section class="messages" id="messages" aria-live="polite">
+      <div class="day-label">HOJE</div>
+    </section>
+
+    <form class="composer" id="composer">
+      <span class="icon plus-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+      <div class="input-shell"><input id="lead-input" type="text" autocomplete="off" placeholder="Mensagem" maxlength="300" disabled></div>
+      <span class="icon camera-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h3l1.4-2h7.2L17 7h3a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V9a2 2 0 012-2z"/><circle cx="12" cy="13" r="4"/></svg></span>
+      <span class="icon mic-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3M9 21h6"/></svg></span>
+      <button id="send-button" type="submit" aria-label="Enviar mensagem" disabled>Enviar</button>
+    </form>
+  </main>
+
+  <div class="age-backdrop" id="age-gate">
+    <section class="age-modal" role="dialog" aria-modal="true" aria-labelledby="age-title">
+      <span class="age-mark">18+</span>
+      <h1 id="age-title">Conteúdo para adultos</h1>
+      <p>Este conteúdo é destinado somente a adultos. Confirme que você tem 18 anos ou mais.</p>
+      <button id="confirm-age" type="button">Tenho 18 anos ou mais</button>
+      <button id="leave-page" class="secondary" type="button">Sair</button>
+    </section>
+  </div>
+
+  <div class="pix-backdrop" id="pix-modal" hidden>
+    <section class="pix-sheet" role="dialog" aria-modal="true" aria-labelledby="pix-title">
+      <button class="close-pix" id="close-pix" type="button" aria-label="Fechar">×</button>
+      <span class="pix-label">PIX</span>
+      <h2 id="pix-title">Pagamento da oferta</h2>
+      <p id="pix-description">Nome da oferta</p>
+      <img id="qr-image" alt="QR Code PIX">
+      <label for="pix-code">PIX COPIA E COLA</label>
+      <div class="copy-row">
+        <input id="pix-code" readonly value="Gerando cobrança...">
+        <button id="copy-pix" type="button">Copiar</button>
+      </div>
+      <strong class="pix-total" id="pix-total">R$ 39,90</strong>
+      <button class="paid-button" id="check-payment" type="button">Já realizei o pagamento</button>
+      <p class="payment-status" id="payment-status" role="status" aria-live="polite"></p>
+    </section>
+  </div>
+
+  <template id="incoming-template">
+    <article class="message incoming"><p></p><time></time></article>
+  </template>
+  <template id="outgoing-template">
+    <article class="message outgoing"><p></p><span class="message-meta"><time></time><span class="read-mark">✓✓</span></span></article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

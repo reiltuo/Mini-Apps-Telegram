@@ -1,0 +1,8 @@
+{
+  "name": "modelo-miniapp-assinatura",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  }
+}
