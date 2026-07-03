@@ -1,7 +1,6 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
   <rect width="400" height="400" fill="#dfe7e5"/>
   <circle cx="200" cy="150" r="70" fill="#97aaa5"/>
   <path d="M75 370c18-91 61-136 125-136s107 45 125 136" fill="#97aaa5"/>
   <text x="200" y="390" text-anchor="middle" font-family="Arial" font-size="18" fill="#40534e">FOTO DO PERFIL</text>
 </svg>
-

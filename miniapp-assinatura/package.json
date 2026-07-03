@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "modelo-miniapp-assinatura",
   "private": true,
   "type": "module",
@@ -6,4 +6,3 @@
     "node": ">=20"
   }
 }
-

@@ -1,7 +1,6 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420">
   <defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#13a8d8"/><stop offset="1" stop-color="#7967e8"/></linearGradient></defs>
   <rect width="1200" height="420" fill="url(#g)"/>
-  <text x="600" y="200" text-anchor="middle" font-family="Arial" font-weight="700" font-size="42" fill="white">ADICIONE O VÃDEO DO BANNER</text>
+  <text x="600" y="200" text-anchor="middle" font-family="Arial" font-weight="700" font-size="42" fill="white">ADICIONE O VÍDEO DO BANNER</text>
   <text x="600" y="250" text-anchor="middle" font-family="Arial" font-size="24" fill="white">assets/banner.mp4</text>
 </svg>
-

@@ -1,4 +1,4 @@
-﻿import { createHmac, timingSafeEqual } from "node:crypto";
+import { createHmac, timingSafeEqual } from "node:crypto";
 
 function json(data, status = 200) {
   return Response.json(data, { status });
@@ -18,26 +18,26 @@ function validSignature(rawBody, signature, timestamp, secret) {
 export default {
   async fetch(request) {
     if (request.method !== "POST") {
-      return json({ error: "MÃ©todo nÃ£o permitido" }, 405);
+      return json({ error: "Método não permitido" }, 405);
     }
 
     const secret = process.env.NEXUSPAG_WEBHOOK_SECRET;
     if (!secret) {
-      return json({ error: "Webhook nÃ£o configurado" }, 500);
+      return json({ error: "Webhook não configurado" }, 500);
     }
 
     const rawBody = await request.text();
     const signature = request.headers.get("x-nexuspag-signature");
     const timestamp = request.headers.get("x-nexuspag-timestamp");
     if (!validSignature(rawBody, signature, timestamp, secret)) {
-      return json({ error: "Assinatura invÃ¡lida" }, 401);
+      return json({ error: "Assinatura inválida" }, 401);
     }
 
     let event;
     try {
       event = JSON.parse(rawBody);
     } catch {
-      return json({ error: "JSON invÃ¡lido" }, 400);
+      return json({ error: "JSON inválido" }, 400);
     }
 
     if (event.event !== "payment.confirmed" || event.status !== "paid") {
@@ -54,4 +54,3 @@ export default {
     return json({ received: true });
   },
 };
-
