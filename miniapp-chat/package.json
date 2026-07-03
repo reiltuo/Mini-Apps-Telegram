@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "modelo-miniapp-chat",
   "private": true,
   "type": "module",
@@ -6,3 +6,4 @@
     "node": ">=20"
   }
 }
+

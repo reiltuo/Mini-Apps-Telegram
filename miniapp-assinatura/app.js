@@ -1,4 +1,4 @@
-const telegram = window.Telegram?.WebApp;
+﻿const telegram = window.Telegram?.WebApp;
 const state = { amount: 1699, label: "PACK VIP", chargeId: null, pollTimer: null, creatingCharge: false, paid: false };
 const money = amount => (amount / 100).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 const byId = id => document.getElementById(id);
@@ -76,14 +76,14 @@ async function createPixCharge() {
   state.creatingCharge = true;
   byId("pay-button").disabled = true;
   byId("paid-button").disabled = true;
-  byId("pix-code").value = "Gerando cobrança PIX...";
+  byId("pix-code").value = "Gerando cobranÃ§a PIX...";
   byId("qr-image").removeAttribute("src");
-  byId("payment-status").textContent = "Gerando uma cobrança segura...";
+  byId("payment-status").textContent = "Gerando uma cobranÃ§a segura...";
   showModal("pix-modal");
   try {
     const response = await fetch("/api/pix/create", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ amount: state.amount, description: state.label }) });
-    const charge = await response.json().catch(() => ({ error: "Não foi possível gerar o PIX" }));
-    if (!response.ok) throw new Error(charge.error || "API PIX indisponível");
+    const charge = await response.json().catch(() => ({ error: "NÃ£o foi possÃ­vel gerar o PIX" }));
+    if (!response.ok) throw new Error(charge.error || "API PIX indisponÃ­vel");
     state.chargeId = charge.id;
     byId("pix-code").value = charge.copyPasteCode;
     byId("qr-image").src = charge.qrCodeBase64.startsWith("data:") ? charge.qrCodeBase64 : `data:image/png;base64,${charge.qrCodeBase64}`;
@@ -91,7 +91,7 @@ async function createPixCharge() {
     byId("paid-button").disabled = false;
     startPaymentPolling();
   } catch (error) {
-    byId("pix-code").value = "Não foi possível gerar o código PIX";
+    byId("pix-code").value = "NÃ£o foi possÃ­vel gerar o cÃ³digo PIX";
     byId("payment-status").textContent = error.message;
   } finally {
     state.creatingCharge = false;
@@ -112,10 +112,10 @@ async function checkPayment() {
       telegram?.HapticFeedback?.notificationOccurred("success");
       telegram?.sendData(JSON.stringify({ action: "pix_paid", chargeId: state.chargeId }));
     } else {
-      byId("payment-status").textContent = "Pagamento ainda não identificado. Tente novamente em alguns segundos.";
+      byId("payment-status").textContent = "Pagamento ainda nÃ£o identificado. Tente novamente em alguns segundos.";
     }
   } catch {
-    byId("payment-status").textContent = "Não foi possível consultar o pagamento agora.";
+    byId("payment-status").textContent = "NÃ£o foi possÃ­vel consultar o pagamento agora.";
   }
 }
 function startPaymentPolling() { clearInterval(state.pollTimer); state.pollTimer = setInterval(checkPayment, 5000); }
@@ -138,7 +138,7 @@ document.querySelector("[data-next-downsell]").addEventListener("click", () => {
 document.querySelectorAll("[data-offer]").forEach(button => button.addEventListener("click", () => { hideModal("downsell-one"); hideModal("downsell-two"); selectAmount(button.dataset.offer, "Acesso VIP promocional"); createPixCharge(); }));
 byId("final-exit").addEventListener("click", () => { hideModal("downsell-two"); telegram?.close(); });
 
-const names = ["Thiago R.", "Lucas M.", "Rafael S.", "Bruno A.", "Marcos V.", "Felipe C.", "João P.", "André L."];
+const names = ["Thiago R.", "Lucas M.", "Rafael S.", "Bruno A.", "Marcos V.", "Felipe C.", "JoÃ£o P.", "AndrÃ© L."];
 function showSocialProof() {
   byId("proof-name").textContent = names[Math.floor(Math.random() * names.length)];
   byId("social-proof").classList.add("show");
@@ -146,3 +146,4 @@ function showSocialProof() {
 }
 setTimeout(showSocialProof, 1600);
 setInterval(showSocialProof, 11000);
+

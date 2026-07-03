@@ -1,4 +1,4 @@
-const messages = document.querySelector("#messages");
+﻿const messages = document.querySelector("#messages");
 const composer = document.querySelector("#composer");
 const input = document.querySelector("#lead-input");
 const sendButton = document.querySelector("#send-button");
@@ -135,7 +135,7 @@ async function chooseSchedule(response) {
   state.step = 2;
   addMessage(response, "outgoing");
   await sendSequence(scripts[2], false);
-  addOffer({ amount: 3990, title: "Nome da oferta", description: "Descreva aqui o que será entregue após o pagamento." });
+  addOffer({ amount: 3990, title: "Nome da oferta", description: "Descreva aqui o que serÃ¡ entregue apÃ³s o pagamento." });
   startDownsells();
 }
 
@@ -166,7 +166,7 @@ async function advanceConversation(response) {
     return;
   }
   addMessage(response, "outgoing");
-  addMessage("O pagamento pode ser feito no botão de reserva acima.");
+  addMessage("O pagamento pode ser feito no botÃ£o de reserva acima.");
 }
 
 composer.addEventListener("submit", event => {
@@ -182,9 +182,9 @@ async function createPix(amount, clickedButton) {
   document.querySelectorAll(".offer-card button").forEach(button => { button.disabled = true; });
   if (clickedButton) clickedButton.textContent = "Gerando PIX...";
   document.querySelector("#pix-total").textContent = money(amount);
-  document.querySelector("#pix-code").value = "Gerando cobrança...";
+  document.querySelector("#pix-code").value = "Gerando cobranÃ§a...";
   document.querySelector("#qr-image").removeAttribute("src");
-  document.querySelector("#payment-status").textContent = "Gerando uma cobrança segura...";
+  document.querySelector("#payment-status").textContent = "Gerando uma cobranÃ§a segura...";
   pixModal.hidden = false;
 
   try {
@@ -193,8 +193,8 @@ async function createPix(amount, clickedButton) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ amount }),
     });
-    const charge = await response.json().catch(() => ({ error: "Não foi possível gerar o PIX" }));
-    if (!response.ok) throw new Error(charge.error || "Não foi possível gerar o PIX");
+    const charge = await response.json().catch(() => ({ error: "NÃ£o foi possÃ­vel gerar o PIX" }));
+    if (!response.ok) throw new Error(charge.error || "NÃ£o foi possÃ­vel gerar o PIX");
 
     state.chargeId = charge.id;
     document.querySelector("#pix-code").value = charge.copyPasteCode;
@@ -224,7 +224,7 @@ async function checkPayment() {
     clearTimeout(state.finalDownsell);
     document.querySelector("#payment-status").textContent = "Pagamento confirmado. Acesso liberado.";
   } else {
-    document.querySelector("#payment-status").textContent = "Pagamento ainda não identificado. Tente novamente em alguns segundos.";
+    document.querySelector("#payment-status").textContent = "Pagamento ainda nÃ£o identificado. Tente novamente em alguns segundos.";
   }
 }
 
@@ -247,3 +247,4 @@ document.querySelector("#copy-pix").addEventListener("click", async () => {
   document.querySelector("#copy-pix").textContent = "Copiado";
   setTimeout(() => { document.querySelector("#copy-pix").textContent = "Copiar"; }, 1400);
 });
+

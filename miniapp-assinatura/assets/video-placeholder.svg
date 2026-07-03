@@ -1,6 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="500" height="700" viewBox="0 0 500 700">
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="500" height="700" viewBox="0 0 500 700">
   <rect width="500" height="700" fill="#dce4eb"/>
   <circle cx="250" cy="315" r="72" fill="#a8b6c3"/>
   <path d="M230 274l65 41-65 41z" fill="white"/>
-  <text x="250" y="440" text-anchor="middle" font-family="Arial" font-weight="700" font-size="25" fill="#52606d">VÍDEO DO CATÁLOGO</text>
+  <text x="250" y="440" text-anchor="middle" font-family="Arial" font-weight="700" font-size="25" fill="#52606d">VÃDEO DO CATÃLOGO</text>
 </svg>
+
